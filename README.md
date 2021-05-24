@@ -18,11 +18,11 @@ Bind an instance of a KV Namespace to access its data in a Worker.
 
 Where Variable name should set as `LINKS` and KV namespace is the namespace you just created firstly in the first step.
 
-<img src="https://cdn.jsdelivr.net/npm/imst@0.0.4/20201205232704.png">
-
 #### 再添加另一个 Variable name 填写`REVERSE_LINKS`, KV namespace填写你刚刚创建的第二个命名空间
 
 And the other one set as `REVERSE_LINKS` and KV namespace is the namespace you just created secondly in the first step.
+
+<img src="https://cdn.jsdelivr.net/npm/imst@0.0.4/20201205232704.png">
 
 ### 创建环境变量，Variable name 填写 APIKEY，值随意填写
 
@@ -36,12 +36,6 @@ Copy the `index.js` code from this project to Cloudflare Worker.
 
 Click Save and Deploy
 
-# Demo
-https://5it.me
- 
-Note: Because someone abuse this demo website, all the generated link will automatically expired after 24 hours. For long-term use, please deploy your own.
-
-注意：由于该示例服务被人滥用，用于转发诈骗网站，故所有由demo网站生成的链接24小时后会自动失效，如需长期使用请自行搭建。
 
 # API 调用示例
 
