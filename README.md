@@ -2,9 +2,9 @@
 A URL Shortener created using Cloudflare Worker
 
 # Getting start
-### 去Workers KV中创建一个命名空间
+### 去Workers KV中创建两个命名空间
 
-Go to Workers KV and create a namespace.
+Go to Workers KV and create two namespaces.
 
 <img src="https://cdn.jsdelivr.net/npm/imst@0.0.4/20201205232805.png">
 
@@ -14,11 +14,19 @@ Bind an instance of a KV Namespace to access its data in a Worker.
 
 <img src="https://cdn.jsdelivr.net/npm/imst@0.0.4/20201205232536.png">
 
-### 其中Variable name填写`LINKS`, KV namespace填写你刚刚创建的命名空间
+#### 第一个 Variable name 填写`LINKS`, KV namespace填写你刚刚创建的第一个命名空间
 
-Where Variable name should set as `LINKS` and KV namespace is the namespace you just created in the first step.
+Where Variable name should set as `LINKS` and KV namespace is the namespace you just created firstly in the first step.
 
 <img src="https://cdn.jsdelivr.net/npm/imst@0.0.4/20201205232704.png">
+
+#### 再添加另一个 Variable name 填写`REVERSE_LINKS`, KV namespace填写你刚刚创建的第二个命名空间
+
+And the other one set as `REVERSE_LINKS` and KV namespace is the namespace you just created secondly in the first step.
+
+### 创建环境变量，Variable name 填写 APIKEY，值随意填写
+
+create a ENVIRONMENT, where Variable name should set as `APIKEY`, value can be anything you like.
 
 ### 复制本项目中的`index.js`的代码到Cloudflare Worker 
 
@@ -34,3 +42,21 @@ https://5it.me
 Note: Because someone abuse this demo website, all the generated link will automatically expired after 24 hours. For long-term use, please deploy your own.
 
 注意：由于该示例服务被人滥用，用于转发诈骗网站，故所有由demo网站生成的链接24小时后会自动失效，如需长期使用请自行搭建。
+
+# API 调用示例
+
+假设：
+1. worker 路由是 `s.example.workers.dev`
+2. 要缩短的链接是 `https://example.com/?kw=dgysuaindjusiafgaj`
+3. APIKEY是 `asecretapikey`
+
+那么访问 API 的方式如下：
+
+```bash
+curl -X GET https://s.example.workers.dev/?url=https://example.com/?kw=dgysuaindjusiafgaj&apikey=asecretapikey
+```
+
+# GUDO
+
+[ ] 1. 开放不加 APIKEY 访问 API 的方式并限制单 IP 每日调用次数
+[ ] 2. 为短链接增加过期时间，定期清理过期的链接（能减少存储空间的使用，但会增加 KV 的调用次数）
