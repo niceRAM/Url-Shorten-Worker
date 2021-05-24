@@ -48,7 +48,7 @@ Note: Because someone abuse this demo website, all the generated link will autom
 假设：
 1. worker 路由是 `s.example.workers.dev`
 2. 要缩短的链接是 `https://example.com/?kw=dgysuaindjusiafgaj`
-3. APIKEY是 `asecretapikey`
+3. 环境变量 APIKEY 的值是 `asecretapikey`
 
 那么访问 API 的方式如下：
 
@@ -58,5 +58,5 @@ curl -X GET https://s.example.workers.dev/?url=https://example.com/?kw=dgysuaind
 
 # GUDO
 
-[ ] 1. 开放不加 APIKEY 访问 API 的方式并限制单 IP 每日调用次数
-[ ] 2. 为短链接增加过期时间，定期清理过期的链接（能减少存储空间的使用，但会增加 KV 的调用次数）
+- [ ] 开放不加 APIKEY 访问 API 的方式并限制单 IP 每日调用次数
+- [ ] 为短链接增加过期时间，定期清理过期的链接（能减少存储空间的使用，但会增加 KV 的调用次数）
